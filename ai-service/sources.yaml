@@ -1,0 +1,140 @@
+# Sources de la revue de presse.
+# priority 1 : revues diplomatiques et think tanks (prioritaires dans la recherche et la synthèse)
+# priority 2 : presse internationale, économique et banques centrales (contexte)
+# paging : paramètre d'URL des archives du flux, utilisé pour charger 1 an d'historique au premier lancement.
+# Flux vérifiés le 12/11/2026. Seuls le titre, le résumé du flux et le lien sont conservés.
+
+sources:
+  # --- Revues diplomatiques et géopolitiques (priorité 1) ---
+  - name: Le Monde diplomatique
+    url: https://www.monde-diplomatique.fr/rss/
+    category: diplomatie
+    priority: 1
+    region: monde
+    language: fr
+
+  - name: Foreign Affairs
+    url: https://www.foreignaffairs.com/rss.xml
+    category: diplomatie
+    priority: 1
+    region: monde
+    language: en
+
+  - name: Foreign Policy
+    url: https://foreignpolicy.com/feed/
+    category: diplomatie
+    priority: 1
+    region: monde
+    language: en
+    paging: paged
+
+  - name: The Diplomat
+    url: https://thediplomat.com/feed/
+    category: diplomatie
+    priority: 1
+    region: asie-pacifique
+    language: en
+
+  - name: IRIS
+    url: https://www.iris-france.org/feed/
+    category: diplomatie
+    priority: 1
+    region: monde
+    language: fr
+    paging: paged
+
+  - name: Le Grand Continent
+    url: https://legrandcontinent.eu/fr/feed/
+    category: diplomatie
+    priority: 1
+    region: europe
+    language: fr
+    paging: paged
+
+  - name: Diploweb
+    url: https://www.diploweb.com/spip.php?page=backend
+    category: diplomatie
+    priority: 1
+    region: monde
+    language: fr
+
+  - name: Atlantic Council
+    url: https://www.atlanticcouncil.org/feed/
+    category: diplomatie
+    priority: 1
+    region: monde
+    language: en
+    paging: paged
+
+  - name: War on the Rocks
+    url: https://warontherocks.com/feed/
+    category: diplomatie
+    priority: 1
+    region: monde
+    language: en
+    paging: paged
+
+  - name: International Crisis Group
+    url: https://www.crisisgroup.org/rss.xml
+    category: diplomatie
+    priority: 1
+    region: monde
+    language: en
+
+  # --- Économie internationale, presse et banques centrales (priorité 2) ---
+  - name: Project Syndicate
+    url: https://www.project-syndicate.org/rss
+    category: economie
+    priority: 2
+    region: monde
+    language: en
+    paging: page
+
+  - name: Le Monde International
+    url: https://www.lemonde.fr/international/rss_full.xml
+    category: international
+    priority: 2
+    region: monde
+    language: fr
+
+  - name: Le Monde Économie
+    url: https://www.lemonde.fr/economie/rss_full.xml
+    category: economie
+    priority: 2
+    region: france
+    language: fr
+
+  - name: RFI Économie
+    url: https://www.rfi.fr/fr/%C3%A9conomie/rss
+    category: economie
+    priority: 2
+    region: monde
+    language: fr
+
+  - name: BBC Business
+    url: https://feeds.bbci.co.uk/news/business/rss.xml
+    category: economie
+    priority: 2
+    region: monde
+    language: en
+
+  - name: The Guardian Business
+    url: https://www.theguardian.com/uk/business/rss
+    category: economie
+    priority: 2
+    region: monde
+    language: en
+
+  - name: Banque centrale européenne
+    url: https://www.ecb.europa.eu/rss/press.html
+    category: banque_centrale
+    priority: 2
+    region: europe
+    language: en
+
+  - name: Federal Reserve
+    url: https://www.federalreserve.gov/feeds/press_all.xml
+    category: banque_centrale
+    priority: 2
+    region: etats-unis
+    language: en

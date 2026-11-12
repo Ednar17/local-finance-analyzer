@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: finance-analyzer-backend
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/finance}
+    username: ${SPRING_DATASOURCE_USERNAME:finance}
+    password: ${SPRING_DATASOURCE_PASSWORD:finance}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+ai-service:
+  url: ${AI_SERVICE_URL:http://localhost:8000}
+  # Un modèle local peut être lent sur une petite carte graphique
+  read-timeout: 300s
+
+finance:
+  # Fenêtre d'historique : presse collectée et budget analysé sur 1 an glissant
+  history-days: ${HISTORY_DAYS:365}
+  news:
+    refresh-interval: PT2H
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

@@ -1,0 +1,20 @@
+.env
+# Java
+backend/target/
+*.class
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+# IDE
+.idea/
+.vscode/
+*.iml
+# Data
+uploads/
+*.log
