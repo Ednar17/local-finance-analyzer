@@ -64,7 +64,7 @@ Le premier démarrage télécharge les modèles (environ 5 Go) puis charge l'his
 | Service | URL |
 |---|---|
 | Application | http://localhost:4200 |
-| API (Swagger) | http://localhost:8080/swagger-ui.html |
+| API (Swagger) | http://localhost:8081/swagger-ui.html |
 | Service IA (docs) | http://localhost:8000/docs |
 
 Pour essayer le budget, importez `samples/releve_demo.csv` (relevé fictif de 12 mois) depuis l'écran **Opérations**.

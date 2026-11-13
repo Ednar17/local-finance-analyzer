@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Local Finance Analyzer - Résumé du projet</title>
+<style>
+  @page { size: A4; margin: 14mm 15mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: #1c2533; font-size: 10.2pt; line-height: 1.42; margin: 0; }
+  header { border-bottom: 3px solid #2f6fde; padding-bottom: 8px; margin-bottom: 12px; }
+  h1 { font-size: 21pt; margin: 0; color: #142033; }
+  .tag { color: #2f6fde; font-weight: 600; font-size: 10.5pt; margin-top: 2px; }
+  .meta { color: #677387; font-size: 9pt; margin-top: 4px; }
+  h2 { font-size: 12.5pt; color: #142033; margin: 14px 0 6px; padding-left: 8px; border-left: 4px solid #2f6fde; }
+  p { margin: 4px 0 6px; }
+  table { width: 100%; border-collapse: collapse; margin: 4px 0 6px; }
+  th, td { text-align: left; vertical-align: top; padding: 5px 7px; border-bottom: 1px solid #e2e7ee; }
+  th { background: #f4f6f9; font-size: 9pt; color: #677387; }
+  td:first-child { font-weight: 600; white-space: nowrap; }
+  ul { margin: 4px 0 6px; padding-left: 18px; }
+  li { margin: 2px 0; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .box { border: 1px solid #e2e7ee; border-radius: 8px; padding: 8px 10px; }
+  .box h3 { margin: 0 0 4px; font-size: 10.5pt; color: #2f6fde; }
+  .diplo { border-color: #7b3fc4; } .diplo h3 { color: #7b3fc4; }
+  .arch { font-family: Consolas, monospace; font-size: 9pt; background: #f4f6f9; border-radius: 8px; padding: 8px 10px; white-space: pre; }
+  .ok { color: #1f8a5b; font-weight: 600; } .todo { color: #c27b13; font-weight: 600; }
+  .pill { display: inline-block; background: #edf1f7; border-radius: 10px; padding: 1px 8px; margin: 2px 3px 2px 0; font-size: 8.8pt; }
+  .page-break { page-break-before: always; }
+  footer { margin-top: 12px; color: #677387; font-size: 8.5pt; border-top: 1px solid #e2e7ee; padding-top: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Local Finance Analyzer</h1>
+  <div class="tag">Analyseur financier propulsé par une IA 100 % locale, alimenté par une revue de presse diplomatique mondiale</div>
+  <div class="meta">Sami Guetarni · Ingénieur logiciel et data · github.com/Ednar17 · Projet personnel, novembre 2026</div>
+</header>
+
+<h2>En une phrase</h2>
+<p>Une application web qui analyse des rapports d'entreprises et un budget personnel avec un modèle de langage exécuté sur la machine, en replaçant les chiffres dans leur contexte grâce à une revue de presse où les revues diplomatiques passent en premier. Aucune donnée ne quitte l'ordinateur.</p>
+
+<h2>Les trois modules</h2>
+<div class="grid">
+  <div class="box diplo">
+    <h3>Revue de presse mondiale</h3>
+    <ul>
+      <li>18 flux publics vérifiés, dont <b>10 revues diplomatiques et think tanks en priorité 1</b> : Foreign Affairs, Foreign Policy, The Diplomat, Le Monde diplomatique, IRIS, Le Grand Continent, Diploweb, Atlantic Council, War on the Rocks, International Crisis Group.</li>
+      <li>Priorité 2 : Project Syndicate, Le Monde, RFI, BBC, The Guardian, BCE, Fed.</li>
+      <li><b>Historique glissant d'un an</b> : archives chargées au premier lancement, collecte toutes les 2 h, purge au-delà de 365 jours.</li>
+      <li>Synthèse rédigée par l'IA : géopolitique, conséquences économiques, points à surveiller.</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h3>Rapports d'entreprises</h3>
+    <ul>
+      <li>Import de rapports annuels PDF, extraction page par page, découpage et vectorisation.</li>
+      <li>Questions en langage naturel avec <b>citation des pages</b> ([R1], [R2]).</li>
+      <li>Option : croiser avec la presse ([N1]) pour relier risques géopolitiques et activité.</li>
+    </ul>
+    <h3 style="margin-top:8px">Budget personnel</h3>
+    <ul>
+      <li>Import d'un relevé CSV bancaire (formats français, débit/crédit, Windows-1252, sans doublons).</li>
+      <li>Catégorisation <b>hybride</b> : règles d'abord, IA locale pour le reste, correction manuelle.</li>
+      <li>Tableau de bord sur 12 mois et analyse tenant compte de l'inflation, des taux, de l'énergie.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Architecture</h2>
+<div class="arch">Angular 17  ──REST /api──►  Spring Boot 3 (Java 17)  ──JPA / Flyway──►  PostgreSQL 16 + pgvector
+ tableaux de bord             documents, opérations,                         ▲ vecteurs
+ chat, sources citées         budget, planification          ──HTTP──►  Service IA (FastAPI, Python 3.12)
+                                                                         │ embeddings, chat      │ RSS
+                                                                         ▼                       ▼
+                                                              Ollama (GPU) qwen2.5:7b     Revues diplomatiques,
+                                                              nomic-embed-text            presse, banques centrales</div>
+
+<h2>Stack technique</h2>
+<p>
+  <span class="pill">Java 17</span><span class="pill">Spring Boot 3.3</span><span class="pill">Spring Data JPA</span><span class="pill">Flyway</span><span class="pill">Bean Validation</span><span class="pill">OpenAPI</span><span class="pill">JUnit 5 / Mockito</span>
+  <span class="pill">Python 3.12</span><span class="pill">FastAPI</span><span class="pill">psycopg 3</span><span class="pill">pgvector</span><span class="pill">pypdf</span><span class="pill">feedparser</span><span class="pill">pytest</span>
+  <span class="pill">Angular 17 (standalone, signals)</span><span class="pill">TypeScript</span><span class="pill">Chart.js</span>
+  <span class="pill">PostgreSQL 16</span><span class="pill">Ollama</span><span class="pill">RAG</span><span class="pill">Docker Compose (GPU NVIDIA)</span><span class="pill">GitHub Actions</span>
+</p>
+
+<h2>Choix techniques qui font la différence</h2>
+<ul>
+  <li><b>RAG avec citations obligatoires</b> : le prompt interdit d'inventer ; chaque réponse liste les extraits utilisés et leur score de pertinence.</li>
+  <li><b>Priorité diplomatique</b> mesurable : bonus de score en recherche vectorielle et ordre de lecture dans la synthèse.</li>
+  <li><b>Confidentialité</b> : le modèle ne reçoit que des agrégats du budget, jamais le relevé brut ; tout tourne en local.</li>
+  <li><b>Robustesse</b> : une source en panne n'arrête pas la collecte ; la sortie JSON du modèle est validée (catégories autorisées, repli sur « Autres ») ; indexation PDF asynchrone.</li>
+  <li><b>Respect du droit d'auteur</b> : seuls le titre, le résumé publié dans le flux et le lien sont stockés.</li>
+</ul>
+
+<h2>État d'avancement au 12 novembre 2026</h2>
+<table>
+  <tr><th>Élément</th><th>État</th></tr>
+  <tr><td>Backend Spring Boot</td><td><span class="ok">Compilé, 22 tests unitaires au vert</span> (parsing CSV, catégorisation, agrégats du budget)</td></tr>
+  <tr><td>Service IA Python</td><td><span class="ok">15 tests au vert</span>, API démarrée, 17 flux sur 18 lus en conditions réelles</td></tr>
+  <tr><td>Frontend Angular</td><td><span class="ok">Build de production OK</span> : 4 écrans (presse, rapports, budget, opérations)</td></tr>
+  <tr><td>Docker et GPU</td><td><span class="ok">Docker réparé, RTX 2060 visible dans les conteneurs</span> ; premier lancement complet en cours</td></tr>
+  <tr><td>Publication GitHub</td><td><span class="todo">À faire</span> : commit local prêt, dépôt public Ednar17/local-finance-analyzer à créer</td></tr>
+</table>
+
+<h2>Prochaines étapes</h2>
+<ul>
+  <li>Test de bout en bout avec le relevé de démonstration et un rapport annuel public, captures d'écran pour le README.</li>
+  <li>Publication sur GitHub, puis ajout du lien sur le CV et le profil LinkedIn.</li>
+  <li>Évolutions : authentification JWT, OCR des PDF scannés, alertes par pays d'activité, évaluation automatique des réponses.</li>
+</ul>
+
+<h2>Ce que le projet démontre pour un recruteur</h2>
+<p>Conception d'une architecture complète et conteneurisée (front, back, service IA, base vectorielle), intégration concrète d'un LLM local avec RAG, traitement de données réelles (PDF, CSV bancaires, flux RSS), tests automatisés et intégration continue. Il couvre à la fois les profils <b>développeur Java / Angular full stack</b> et <b>data / IA</b>.</p>
+
+<footer>Analyses informatives générées par un modèle local : elles ne constituent pas un conseil en investissement.</footer>
+</body>
+</html>
