@@ -38,11 +38,16 @@ public class NewsService {
     public List<NewsArticle> search(String region, String category, String query, int days, int limit) {
         int window = Math.min(Math.max(days, 1), historyDays);
         return articles.search(OffsetDateTime.now().minusDays(window), blankToNull(region), blankToNull(category),
-                blankToNull(query), PageRequest.of(0, Math.min(Math.max(limit, 1), 200)));
+                titleFilter(query), PageRequest.of(0, Math.min(Math.max(limit, 1), 200)));
     }
 
     private static String blankToNull(String value) {
         return value == null || value.isBlank() ? null : value.trim();
+    }
+
+    /** Lower-cased title filter; an empty string matches every title (a null parameter would be typed bytea by PostgreSQL). */
+    static String titleFilter(String value) {
+        return value == null ? "" : value.trim().toLowerCase(java.util.Locale.ROOT);
     }
 
     @Transactional(readOnly = true)

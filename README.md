@@ -21,6 +21,14 @@ L'application croise donc trois sources de contexte avant de répondre :
 
 Toutes les inférences tournent sur la machine avec [Ollama](https://ollama.com) : aucun relevé bancaire ni document n'est envoyé à un service externe.
 
+## Aperçu
+
+| Budget sur 12 mois | Opérations catégorisées |
+|---|---|
+| ![Tableau de bord du budget](docs/screenshots/budget.png) | ![Liste des opérations](docs/screenshots/operations.png) |
+
+*Données de démonstration : `samples/releve_demo.csv`, relevé fictif.*
+
 ## Architecture
 
 ```mermaid
@@ -81,7 +89,7 @@ cd backend && mvn verify
 # Service IA
 cd ai-service && pip install -r requirements-dev.txt && pytest
 
-# Frontend (proxy vers localhost:8080)
+# Frontend (proxy vers localhost:8081)
 cd frontend && npm install && npm start
 ```
 

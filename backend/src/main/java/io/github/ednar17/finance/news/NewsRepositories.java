@@ -16,7 +16,7 @@ interface NewsArticleRepository extends JpaRepository<NewsArticle, Long> {
             where a.publishedAt >= :since
               and (:region is null or a.region = :region)
               and (:category is null or a.category = :category)
-              and (:query is null or lower(a.title) like lower(concat('%', :query, '%')))
+              and lower(a.title) like concat('%', :query, '%')
             order by a.priority asc, a.publishedAt desc
             """)
     List<NewsArticle> search(@Param("since") OffsetDateTime since,
